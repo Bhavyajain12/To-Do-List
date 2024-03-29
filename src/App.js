@@ -16,7 +16,7 @@ function App() {
   {
     setItems((prevValue)=>{
       return prevValue.filter((item,index)=>{
-        return index !== id
+        return index !==git 
       })
     })
   }
