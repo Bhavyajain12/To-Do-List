@@ -1,3 +1,5 @@
+In this to-do list, you can add your daily tasks and also delete the tasks that are completed.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
