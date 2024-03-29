@@ -1,23 +1,39 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
+import React,{useState} from "react"
 import './App.css';
+import InputArea from "./InputArea"
+import ToDoItem from "./ToDoItem"
 
 function App() {
+  const[items,setItems] = useState([])
+  function handleItems(inputText)
+  {
+    setItems((prevValue)=>{
+      return [...prevValue,inputText]
+    })
+  }
+  function deleteItem(id)
+  {
+    setItems((prevValue)=>{
+      return prevValue.filter((item,index)=>{
+        return index !== id
+      })
+    })
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <div className="heading">
+        <h1>To-Do List</h1>
+      </div>
+      <InputArea onAdd={handleItems}/>
+      <div>
+        <ul>
+          {items.map((toDoItem,index)=>(
+            <ToDoItem 
+            text={toDoItem} key={index} id={index} onClicked={deleteItem}/>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
